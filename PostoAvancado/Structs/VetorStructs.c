@@ -15,14 +15,14 @@ int main(int argv, char *argc[])
   //Vetor de uma Estrutura
   struct pessoa p[5];
 
-  for(int i = 0; i < 5; i++)
+  for(int i = 0; i < 3; i++)
   {
     printf("Nome: ");
     fgets(p[i].nome, 50, stdin);
     p[i].nome[strcspn(p[i].nome, "\n")] = '\0';
     
     printf("Idade: ");
-    scanf("%d", &p[i].idade);
+    scanf("%hd", &p[i].idade);
     
     printf("\n");
     setbuf(stdin, NULL);
