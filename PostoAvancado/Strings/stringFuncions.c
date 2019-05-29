@@ -5,6 +5,18 @@
 int main(int argv, char *argc[])
 {
 
+  /*
+   *  strlen    -> Tamanho da String
+   *
+   *  strcpy    -> Copiar uma String
+   *  
+   *  strcat    -> Concatenar duas Strings
+   *
+   *  strcmp    -> Comparar duas Strings
+   *
+   * **/
+
+  //Funções básicas da biblioteca <string.h>
   int size;
   char origem[30] = "Hello World in C"; 
   char destino[30];
@@ -23,6 +35,7 @@ int main(int argv, char *argc[])
   //Saída na tela: 
   puts(destino);
 
+  //Verificando sem as Strings são iguais
   //char *strcmp(cosnt char *s1, const char *s2) : 0 -> equals ? 1 - differents;
   if(strcmp(origem, destino) == 0)
     printf("Equals\n");
