@@ -1,5 +1,5 @@
 # LinguagemC
-Olá Terráqueos,
+Olá Terráqueos ou pessoas do multiverso,
 
 
 Me chamo Rodrigo Andrade e sou estudante de Sistemas de Informação pela 
