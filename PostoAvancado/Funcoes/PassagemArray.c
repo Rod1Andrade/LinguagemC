@@ -3,7 +3,7 @@
 
 void imprime(int *v, int n)
 {
-  for(int i =0; i < n; i++)
+  for(int i = 0; i < n; i++)
     printf("%d\n", *(v+i));  
 }
 
@@ -27,6 +27,8 @@ int main(void)
 
   int vetor[] = {-10, 10, 20, 30, 40 };
 
+  //Observação, não necessita do operador de endereço:
+  //O nome do vertor é o endereço da sua posição inicial na memória.
   imprime(vetor, 5);
 
   return 0;
