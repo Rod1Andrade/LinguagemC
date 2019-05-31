@@ -1,6 +1,6 @@
 /**
  * Desenvolva um programa para concatenar duas strings digitadas pelo usuário. As
- * strings devem ser concatenadas em outra variável e convertida para maiúscula
+ * strings devem ser concatenadas em outra variável e convertida para maiúscula.
  *
  * */
 
