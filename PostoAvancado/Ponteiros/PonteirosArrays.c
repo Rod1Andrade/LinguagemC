@@ -1,6 +1,15 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+/*
+ * Array: Conjuto de dados
+ * armazenados de forma sequencial na memória.
+ *
+ * O nome de um array é apenas um ponteiro que aponta 
+ * para o primeiro lemento do array.
+ *
+ * **/
+
 int main(void)
 {
 
@@ -43,10 +52,17 @@ int main(void)
   for(int i = 0; i < 3; i++)
     printf("%p = %c\n", ponteiroVetor+i, *(ponteiroVetor+i));
 
+  /**
+   * A notação de colchetes é apenas um simplificação
+   * da artimética de ponteiros com acesso ao conteúdo.
+   *
+   * */
+
   printf("\nMétodo 2: \n");
+
   //Imprimindo endereços e valores:
   for(int i = 0; i < 3; i++)
-    printf("%p = %c\n", ponteiroVetor+i, ponteiroVetor[i]);
+    printf("%p = %c\n", &ponteiroVetor[i], ponteiroVetor[i]);
 
   return 0;
 } 
