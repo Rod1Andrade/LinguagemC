@@ -49,10 +49,17 @@ int main(int argv, char *argc[])
 
     indice++;
 
+<<<<<<< HEAD
     //Index vai sempre retornar o Maior:
     int index, Padrao = 0;
 
     if(indice == tam) 
+=======
+    //Index vai sempre retornar o maior:
+    int index, Padrao = 0;
+
+    if(indice == 2) 
+>>>>>>> 6251fa6e27b0dd78db82bba1b26eabc9a56ae943
     {
       
       int MaiorIdade = Pessoa[0].Idade;

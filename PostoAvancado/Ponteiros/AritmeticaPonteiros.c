@@ -5,9 +5,10 @@ int main(int argv, char *argc[])
 {
 
   //Pode-se alterar o valor da variavel raiz utilizando um ponteiro: 
-  char x, *px;
+  char x, *px, *pc;
   px = &x;
   *px = 3;
+
 
   //Valor inicial:
   printf("x = %d\n", x);
@@ -31,7 +32,15 @@ int main(int argv, char *argc[])
 
   *px++;
 
-  printf("Ender px = %d\n", px);
+  printf("Ender px = %d\n\n", px);
+
+  pc = px;
+
+  //Ponteiros podem ser comparados:
+  if(px == pc)
+    printf("Ponteiros apontam para o mesmo endereço.\n");
+  else
+    printf("Ponteiros apotam para um endereço diferente.\n");
 
   return 0;
 }
