@@ -79,7 +79,7 @@ se 0 == 0
 /*
  * Nesse ponto do programa, acaba-se a recursividade,
  * o processo de empilhamento está finalizado por ter 
- * atingindo um parâmetro de para nas chamadas das funções
+ * atingindo um parâmetro de parada nas chamadas das funções
  *
  * Agora as funções vao retornar os valores para a função na qual a chamou
  *
