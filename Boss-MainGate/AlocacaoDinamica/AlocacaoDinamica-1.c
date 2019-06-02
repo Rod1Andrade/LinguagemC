@@ -1,3 +1,6 @@
+/**
+ * Introdução a Alocação Dinâmica de memória:
+ * */
 #include <stdio.h>
 #include <stdlib.h>
 
