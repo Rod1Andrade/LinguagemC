@@ -24,7 +24,7 @@ int main(int argv, char *argc[])
   setlocale(LC_ALL, "Portuguese");
 
   //Tamanho vetor:
-  const int tam = 4;
+  const int tam = 2;
 
   //Intanciando na memória um vetor de pessoa.
   pessoa Pessoa[tam];
