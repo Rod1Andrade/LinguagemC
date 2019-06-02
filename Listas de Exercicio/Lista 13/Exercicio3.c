@@ -22,8 +22,11 @@ int main(int argv, char *argc[])
   
   setlocale(LC_ALL, "Portuguese");
 
+  //Tamanho vetor:
+  const int tam = 2;
+
   //Intanciando na memória um vetor de pessoa.
-  pessoa Pessoa[2];
+  pessoa Pessoa[tam];
   
   //Indice para controlar o vetor:
   short indice = 0; 
@@ -31,13 +34,13 @@ int main(int argv, char *argc[])
   //Variavel igual se o valor for igual a 1, significa que as idades são iguais:
   int igual = 0;
 
-  const int tam = 2;
 
   while(1)
   {
     printf("Nome: ");
     fgets(Pessoa[indice].Nome, 40, stdin);
 
+    //Substituindo o caracter de \n pelo de \0
     Pessoa[indice].Nome[strlen(Pessoa[indice].Nome) - 1] = '\0';
 
     //Critério de parada do looping:
@@ -49,17 +52,10 @@ int main(int argv, char *argc[])
 
     indice++;
 
-<<<<<<< HEAD
     //Index vai sempre retornar o Maior:
     int index, Padrao = 0;
 
     if(indice == tam) 
-=======
-    //Index vai sempre retornar o maior:
-    int index, Padrao = 0;
-
-    if(indice == 2) 
->>>>>>> 6251fa6e27b0dd78db82bba1b26eabc9a56ae943
     {
       
       int MaiorIdade = Pessoa[0].Idade;
