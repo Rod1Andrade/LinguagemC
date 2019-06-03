@@ -91,8 +91,8 @@ int main(int argv, char *argc[])
     if(p[i].Idade == IdadeMaior)
     {
       pVelha = (struct pessoa *) realloc(pVelha, (i+1) * tamanho);
-      strcpy(pVelha[i].Nome, p[i].Nome);
-      pVelha[i].Idade = p[i].Idade;
+      strcpy(pVelha[Quantidade].Nome, p[i].Nome);
+      pVelha[Quantidade].Idade = p[i].Idade;
       Quantidade++;
     }
   }
