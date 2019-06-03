@@ -1,0 +1,68 @@
+
+/**
+ * Faça um programa para ler o nome e a idade de dois famosos e depois escrever o
+ * nome do famoso mais velho ou se as idades são iguais. O programa deve parar de ler
+ * os dados se for digitado fim(maiúsculo ou minúsculo) no nome
+ * */
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <locale.h>
+
+//Área de structs: 
+struct pessoa
+{
+  char Nome[40];
+  short Idade;
+
+};
+
+int main(int argv, char *argc[])
+{
+
+  /* 
+   * 1 Plano: 
+   *   - Criar um vetor de Pessoas e um vetor de PessoasMaisVelhas: 
+   *   O vetor Pessoas pode ser um vetor de tamanho estático?
+   *   O vetor PessoasMaisVelhas pode ser um vetor de tamanho estático?
+   *
+   *   Ambas as resposta: Não.
+   *   
+   *   Quero partir de um tamanho minímo, que será 2. E realocar memória, até que seja digitado fim.
+   *
+   * **/
+
+  int tamanhoMinino = 2, index = 0;
+  struct pessoa *p;
+  struct pessoa *pVelha = NULL;
+
+  p = malloc(tamanhoMinino * sizeof(p));
+
+  while(1)
+  {
+    
+    if(index > 2)
+      p = realloc(p, index);
+  }
+
+  return 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
