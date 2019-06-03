@@ -99,32 +99,18 @@ int main(int argv, char *argc[])
 
 
   for(int i = 0; i < Quantidade; i++)
-    printf("%s ", pVelha[i].Nome);
+  {
+    printf("%s", pVelha[i].Nome);
+    if(i != Quantidade-1)
+      printf(", ");
+  }
   if(Quantidade != 1)
-    printf("tem a mesma idade.\n");
+    printf(" tem a mesma idade.\n");
   else
-    printf("é o mais velho.\n");
+    printf(" é o mais velho.\n");
 
   free(p);
   free(pVelha);
 
   return 0;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
