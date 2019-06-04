@@ -24,8 +24,16 @@ int main(void)
     exit(1);
   }
 
+  /*
+   * Função EOF
+   * ler até o fim do arquivo, excelente para lidar 
+   * com leitura de binários ou que não seja caracter a 
+   * caracter
+   * 
+   * **/
+
   int caracterLido = fgetc(oldFile);
-  while(caracterLido != EOF)
+  while(!feof(oldFile))
   {
     fputc(toupper(caracterLido), newFile);   
     caracterLido = fgetc(oldFile);
@@ -37,7 +45,7 @@ int main(void)
   //Agora abre para leitura:
   newFile = fopen("ArquivoCase.txt", "r");
   caracterLido = fgetc(newFile); 
-  while(caracterLido != EOF)
+  while(!feof(newFile))
   {
     printf("%c", caracterLido);
     caracterLido = fgetc(newFile); 
