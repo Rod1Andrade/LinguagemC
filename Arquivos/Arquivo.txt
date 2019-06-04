@@ -1,2 +1,5 @@
-BCDEFGHIJKLMNOPQRSTUVWXYZ
-Rodrigo Andrade, estudante da linguagem C
+c é uma linguagem de programação compilada
+de propósito geral, estruturada, imperativa,
+procedural, padronizada pelo ISO criada em 1972,
+por Dennis Ritchie.
+No AT&T Labs.
