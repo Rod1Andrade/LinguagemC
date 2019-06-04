@@ -29,6 +29,7 @@ int main(void)
     exit(1);
   }
 
+  ///Desse modo lê-se caracter por caracter, até que chege ao fim do arquivo.
   printf("Lendo os dados dentro do Arquivo: \"Arquivo.txt\"\n");
   char caracterLido = fgetc(file);
   while(caracterLido != EOF)
@@ -38,6 +39,6 @@ int main(void)
   }
 
   fclose(file);
-  
+
   return 0;
 }
