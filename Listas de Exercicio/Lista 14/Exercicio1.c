@@ -1,4 +1,6 @@
 /**
+ * @author: Rodrigo Andrade
+ *
  * Fazer um programa para cálcular todas as combinações possíveis
  * de jogos da mega-sena:
  *
