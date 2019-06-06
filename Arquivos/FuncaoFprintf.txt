@@ -1,0 +1,3 @@
+Nome: Rodrigo Andrade
+Idade: 19
+Altura: 1.66
