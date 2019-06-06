@@ -34,20 +34,30 @@ typedef struct
 } porcoes;
 
 //Parametrização de Funções:
+int tamanhoArquivo(char *nomeArquivo);
 void armazenarPorcoes();
 void LeituraPorcoes();
+void loading();
 
 int main(void)
 {
 
   setlocale(LC_ALL, "Portuguese");
+  if(tamanhoArquivo("Porcoes.txt") == 0)
+  {
+    printf("Arquivo vázio ou inesistente, pressione enter para preencher.\n");
+    getchar();
+    setbuf(stdin, NULL);
+    armazenarPorcoes();
+  }
 
   short escolha;
-  printf("Você desejar ir para o menu ou adcionar porções? \n1 - Menu 2 - Porções : \n");
+  printf("Você desejar ir para o menu ou adcionar porções? \n1 - Menu 2 - Porções : ");
   scanf("%hd", &escolha);
   if(escolha == 1)
   {
     system("clear");
+    loading();
     LeituraPorcoes();
   }
   else
@@ -58,7 +68,6 @@ int main(void)
     scanf("%hd", &escolha);
     if(escolha == 1)
     {
-      system("clear");
       armazenarPorcoes();
 
       system("clear");
@@ -73,6 +82,34 @@ int main(void)
   return 0;
 }
 
+//Funcao Loading:
+void loading()
+{
+  system("clear"); // Limpar a tela
+  printf("Loading"); // Exibir a Palavra Loading na tela em branco
+
+  for(int i = 0;i < 3; i++){ // abrir um laço de repetição com for
+    system("sleep 01"); // pausa de 1 segundo
+    printf("."); // escrever 1 "." na tela
+    fflush(stdout); // atualizar a tela
+  }
+  printf("\n");
+  system("clear");
+}
+
+//Verificar o tamanho do arquivo:
+int tamanhoArquivo(char *nomeArquivo)
+{
+  FILE *arquivo;
+  arquivo = fopen(nomeArquivo, "rb");
+  if(arquivo == NULL)
+    return 0;
+  fseek(arquivo, 0, SEEK_END);
+  int tamanho = ftell(arquivo);
+  return tamanho;
+}
+
+//Armazenar dados dentro do arquivo: 
 void armazenarPorcoes()
 { 
   setbuf(stdin, NULL);
@@ -86,6 +123,9 @@ void armazenarPorcoes()
 
   for(int i = 0; i < tamanho; i++)
   {
+    system("clear");
+    printf("Adcione 10 porções e suas calorias:\n\n");
+    printf("#%d:\n", (i+1));
     printf("Porção: ");
     fgets(Porcoes[i].Nome, 30, stdin);
     Porcoes[i].Nome[strlen(Porcoes[i].Nome) - 1] = '\0';
@@ -120,7 +160,7 @@ void LeituraPorcoes()
 
   int totalLido = fread(Porcoes, sizeof(porcoes), tamanho, arquivo);
   if(totalLido != tamanho)
-    printf("Impossível ler todos os arquivos\n");
+    printf("Impossível ler todos os Dados\n");
 
   float Peso, Velocidade, Min;
   short opcao;
@@ -130,7 +170,7 @@ void LeituraPorcoes()
     for(int i = 0; i < tamanho; i++)
       printf("%d - %s\n", i, Porcoes[i].Nome);
 
-    printf("Sair -1\n");
+    printf("Sair: -1\n");
     printf("Opção: ");
     scanf("%hd", &opcao);
 
@@ -169,7 +209,7 @@ void LeituraPorcoes()
         scanf("%f", &Velocidade);
         Min = Porcoes[opcao].Caloria / (Velocidade * Peso * 0.0175);
 
-        printf("Você deverá correr ou caminhar por: %.2f\n", Min);
+        printf("Você deverá correr ou caminhar por: %.2f minutos.\n", Min);
         setbuf(stdin, NULL);
         getchar();
 
@@ -187,7 +227,7 @@ void LeituraPorcoes()
         scanf("%f", &Velocidade);
         Min = Porcoes[opcao].Caloria / (Velocidade * Peso * 0.0175);
 
-        printf("Você deverá correr ou caminhar por: %.2f\n", Min);
+        printf("Você deverá correr ou caminhar por: %.2f minutos.\n", Min);
         setbuf(stdin, NULL);
         getchar();
 
@@ -204,7 +244,7 @@ void LeituraPorcoes()
         scanf("%f", &Velocidade);
         Min = Porcoes[opcao].Caloria / (Velocidade * Peso * 0.0175);
 
-        printf("Você deverá correr ou caminhar por: %.2f\n", Min);
+        printf("Você deverá correr ou caminhar por: %.2f minutos.\n", Min);
         setbuf(stdin, NULL);
         getchar();
 
@@ -222,7 +262,7 @@ void LeituraPorcoes()
         scanf("%f", &Velocidade);
         Min = Porcoes[opcao].Caloria / (Velocidade * Peso * 0.0175);
 
-        printf("Você deverá correr ou caminhar por: %.2f\n", Min);
+        printf("Você deverá correr ou caminhar por: %.2f minutos.\n", Min);
         setbuf(stdin, NULL);
         getchar();
 
@@ -240,7 +280,7 @@ void LeituraPorcoes()
         scanf("%f", &Velocidade);
         Min = Porcoes[opcao].Caloria / (Velocidade * Peso * 0.0175);
 
-        printf("Você deverá correr ou caminhar por: %.2f\n", Min);
+        printf("Você deverá correr ou caminhar por: %.2f minutos.\n", Min);
         setbuf(stdin, NULL);
         getchar();
 
@@ -257,7 +297,7 @@ void LeituraPorcoes()
         scanf("%f", &Velocidade);
         Min = Porcoes[opcao].Caloria / (Velocidade * Peso * 0.0175);
 
-        printf("Você deverá correr ou caminhar por: %.2f\n", Min);
+        printf("Você deverá correr ou caminhar por: %.2f minutos.\n", Min);
         setbuf(stdin, NULL);
         getchar();
 
@@ -274,7 +314,24 @@ void LeituraPorcoes()
         scanf("%f", &Velocidade);
         Min = Porcoes[opcao].Caloria / (Velocidade * Peso * 0.0175);
 
-        printf("Você deverá correr ou caminhar por: %.2f\n", Min);
+        printf("Você deverá correr ou caminhar por: %.2f minutos.\n", Min);
+        setbuf(stdin, NULL);
+        getchar();
+
+        system("clear");
+        break; 
+      case 8:
+        system("clear");
+        printf("%s\n", Porcoes[opcao].Nome);
+        printf("Quantidade de calorias: %.2f\n", Porcoes[opcao].Caloria);
+        printf("\nVocê deverá fazer uma caminhada ou corrida para gastar as calorias adquiridas.\n\n");
+        printf("Digite seu peso: ");
+        scanf("%f", &Peso);
+        printf("Em qual velocidade vai caminhar/correr: ");
+        scanf("%f", &Velocidade);
+        Min = Porcoes[opcao].Caloria / (Velocidade * Peso * 0.0175);
+
+        printf("Você deverá correr ou caminhar por: %.2f minutos.\n", Min);
         setbuf(stdin, NULL);
         getchar();
 
@@ -291,14 +348,14 @@ void LeituraPorcoes()
         scanf("%f", &Velocidade);
         Min = Porcoes[opcao].Caloria / (Velocidade * Peso * 0.0175);
 
-        printf("Você deverá correr ou caminhar por: %.2f\n", Min);
+        printf("Você deverá correr ou caminhar por: %.2f minutos.\n", Min);
         setbuf(stdin, NULL);
         getchar();
 
         system("clear");
         break; 
 
-      defautl:
+defautl:
         printf("Opção Inválida\n");
         getchar();
         setbuf(stdin, NULL);
