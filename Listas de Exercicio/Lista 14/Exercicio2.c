@@ -85,7 +85,7 @@ float ImpostoRenda(float SalarioBruto, float INSS)
     return 0;  
   else if(SalarioBruto <= 2826.65)
       return ((SalarioBruto - INSS) * 0.75) - 142.80;
-  elseif(SalarioBruto <= 3751.05)
+  else if(SalarioBruto <= 3751.05)
       return ((SalarioBruto - INSS) * 0.15) - 354.80;
   else if(SalarioBruto <= 4664.68)
       return ((SalarioBruto - INSS) * 0.225) - 636.13;

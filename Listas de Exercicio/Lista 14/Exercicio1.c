@@ -112,5 +112,30 @@ int main(void)
 
     printf("Chance é de: %ld / %ld\n", (n/p), Combinacao);
   } 
+
+  setbuf(stdin, NULL);
+  printf("Pressione qualquer tecla para ver as jogadas: \n");
+  getchar();
+
+  for(int n1 = 1; n1 <= 60; n1++)
+  {
+    for(int n2 = n1 +1; n2 <= 60; n2++)
+    {
+      for(int n3 = n2 +1; n3 <= 60; n3++)
+      {
+        for(int n4 = n3 + 1; n4 <= 60; n4++)
+        {
+          for(int n5 = n4 + 1; n5 <= 60; n5++)
+          {
+            for(int n6 = n5 +1; n6 <= 60; n6++)
+            {
+              printf("%d - %d - %d - %d - %d -%d\n", n1, n2, n3, n4, n5, n6);
+            }
+          }
+        }
+      }
+
+    }
+  }
   return 0;
 }
