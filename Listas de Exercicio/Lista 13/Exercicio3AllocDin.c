@@ -19,7 +19,7 @@ struct pessoa
 
 };
 
-int main(int argv, char *argc[])
+int main(int argc, char *argv[])
 {
 
   /* 
@@ -36,7 +36,6 @@ int main(int argv, char *argc[])
 
   int tamanhoMinimo = 2, index = 0;
   struct pessoa *p;
-  struct pessoa *pVelha = NULL;
 
   long tamanho = sizeof(p);
   printf("tamanho %zu\n", tamanho);
@@ -51,10 +50,10 @@ int main(int argv, char *argc[])
     {
       p = (struct pessoa *) realloc(p, (tamanhoMinimo*2) * tamanho);
       tamanhoMinimo = index*2;
-      printf("Tamanho Mininmo: %d\n", tamanhoMinimo);
+     // printf("Tamanho Mininmo: %d\n", tamanhoMinimo); --> Debugging
     }
 
-    printf("#%d - Dados: \n", index);
+    //printf("#%d - Dados: \n", index); --> Debugging
     printf("Nome: ");
     fgets(p[index].Nome, 40, stdin);
     p[index].Nome[strlen(p[index].Nome) - 1] = '\0';
@@ -96,27 +95,19 @@ int main(int argv, char *argc[])
   {
     if(p[i].Idade == IdadeMaior)
     {
-      pVelha = (struct pessoa *) realloc(pVelha, (i+3) * tamanho);
-      strcpy(pVelha[Quantidade].Nome, p[i].Nome);
-      pVelha[Quantidade].Idade = p[i].Idade;
+      printf("%s", p[i].Nome);
       Quantidade++;
+      if(Quantidade >= 1)
+        printf(", ");
     }
+    setbuf(stdin, NULL);
   }
 
-
-  for(int i = 0; i < Quantidade; i++)
-  {
-    printf("%s", pVelha[i].Nome);
-    if(i != Quantidade-1)
-      printf(", ");
-  }
-  if(Quantidade != 1)
-    printf(" tem a mesma idade.\n");
+  if(Quantidade > 1)
+    printf(" tem a mesma Idade.\n");
   else
-    printf(" é o mais velho.\n");
+    printf(" é o mais velho\n");
 
   free(p);
-  free(pVelha);
-
   return 0;
 }
