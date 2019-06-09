@@ -34,16 +34,26 @@ int main(int argv, char *argc[])
    *
    * **/
 
-  int tamanhoMinino = 2, index = 0;
+  int tamanhoMinimo = 2, index = 0;
   struct pessoa *p;
   struct pessoa *pVelha = NULL;
 
   long tamanho = sizeof(p);
   printf("tamanho %zu\n", tamanho);
-  p = (struct pessoa *) malloc(tamanhoMinino * tamanho);
+  p = (struct pessoa *) malloc(tamanhoMinimo * tamanho);
 
   while(1)
   {
+     setbuf(stdin, NULL);
+
+    //Critério para realocação de memória: 
+    if(index >= tamanhoMinimo)
+    {
+      p = (struct pessoa *) realloc(p, (tamanhoMinimo*2) * tamanho);
+      tamanhoMinimo = index*2;
+      printf("Tamanho Mininmo: %d\n", tamanhoMinimo);
+    }
+
     printf("#%d - Dados: \n", index);
     printf("Nome: ");
     fgets(p[index].Nome, 40, stdin);
@@ -57,10 +67,6 @@ int main(int argv, char *argc[])
     scanf("%d", &p[index].Idade);
 
     setbuf(stdin, NULL);
-
-    //Critério para realocação de memória: 
-    if(index > 2)
-      p = (struct pessoa *) realloc(p, index * tamanho);
 
     index++;
   }
@@ -90,7 +96,7 @@ int main(int argv, char *argc[])
   {
     if(p[i].Idade == IdadeMaior)
     {
-      pVelha = (struct pessoa *) realloc(pVelha, (i+1) * tamanho);
+      pVelha = (struct pessoa *) realloc(pVelha, (i+3) * tamanho);
       strcpy(pVelha[Quantidade].Nome, p[i].Nome);
       pVelha[Quantidade].Idade = p[i].Idade;
       Quantidade++;
