@@ -1,97 +1,19 @@
+/** MY LIBRARY */
+#include "verificadorcpf.h"
+
+/** API DA LINGUAGEM C*/
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 
-/* ESTRUTURA COLABORADOR **/
-typedef struct
-{
-  char Nome[41];
-  char CPF[13];
-  char Sexo;
-  char DataNascimento[11];
-  float Salario;
-  int Dependentes;
-
-  char Departamento[15];
-  char Escolaridade[15];
-
-} colaborador;
-
-//Parametrização de Funções:
+///PARAMETRIZAÇÃO DAS FUNÇÕES
 int verificaCPF(char *n);
 
-int main(int argc, char **argv)
-{
-  //CHAMADA DO ARQUIVO
-  FILE *Arquivo = fopen("Cad_Colabores.txt", "ab");
-
-  //Verificação da abertura do arquivo
-  if(Arquivo == NULL)
-  {
-    printf("Impossível abrir o arquivo\n");
-    getchar();
-    exit(1);
-  }
-
-
-  //Instância o colaborador na memória
-  colaborador Colaborador; 
-  printf("%zu\n", sizeof(colaborador));
-
-  while(strcasecmp(Colaborador.Nome, "fim") != 0)
-  {
-    system("clear");
-    setbuf(stdin, NULL);
-
-    printf("\tLABORATÓRIO FARMACÊUTICO LÓGICA I\n");
-    printf("\tSistema de Recursos Humanos\n\n");
-
-    printf("Nome: ");
-    fgets(Colaborador.Nome, 41, stdin);
-    Colaborador.Nome[strlen(Colaborador.Nome) -1 ] = '\0';
-
-    if(strcasecmp(Colaborador.Nome, "fim") != 0)
-    {
-      while(strlen(Colaborador.Nome) < 3 || strlen(Colaborador.Nome) > 40) 
-      {
-        printf("Mensagem de erro: O nome deve ter no mínimo 3 e no máximo 40 caracteres.\n");
-        printf("Nome: ");
-        fgets(Colaborador.Nome, 41, stdin);
-
-        Colaborador.Nome[strlen(Colaborador.Nome) -1 ] = '\0';
-      }//Fim da validação do nome: 
-
-      printf("CPF: ");
-      fgets(Colaborador.CPF, 13, stdin);
-      Colaborador.CPF[strlen(Colaborador.CPF) -1 ] = '\0';
-
-      while(verificaCPF(Colaborador.CPF) == 0)
-      {
-        printf("\nMensagem de erro: O CPF deve ser valido.\n");
-        printf("CPF: ");
-        fgets(Colaborador.CPF, 13, stdin);
-        Colaborador.CPF[strlen(Colaborador.CPF) -1 ] = '\0';
-      }//Fim validação CPF 
-
-    }//Fim do if
-  }//Fim do while mais externo
-
-  //Fechamento do arquivo
-  fclose(Arquivo);
-
-  return 0;
-}
-
-
-/*
- * VALIDAÇÃO DO CPF SEGUNDO O ALGORITIMO DA RECEITA FEDERAL
- * @author: Rodrigo Andrade
- * 12/jun/2019 01:43AM
- *
- * @param char n digitos CPF
- * @return 1 se for válido e 0 se for inválido
- *
- * **/
+///IMPLEMENTAÇÂO DA FUNÇÃO VERIFICACPF
+// @author: Rodrigo Andrade
+// @param char * n
+// @return 0 em caso de um CPF INVÁLIDO
+// @return 1 em caso de um CPF VÁLIDO
 int verificaCPF(char *n)
 {
   if(strlen(n) < 11)
@@ -176,7 +98,7 @@ int verificaCPF(char *n)
   for(int i = 0; i < 9; i++)
     Digito1 += (vetor[i] * Count--);
 
-  //Resto da divisão da soma dos digitos do digito por 11
+  //Resto da divisão do digito por 11
   Digito1 %= 11;
   Digito1 = 11 - Digito1;
 
@@ -189,7 +111,7 @@ int verificaCPF(char *n)
   for(int i = 0; i < 10; i++)
     Digito2 += (vetor[i] * Count--);
 
-  //Segue de maneira analoga a verificação dos digitos:
+  //Segue de maneira analoga a verificação dos digitor:
   Digito2 %= 11;
   Digito2 = 11 - Digito2;
   if(Digito2 > 9)
@@ -200,5 +122,5 @@ int verificaCPF(char *n)
     return 0; //Caso do cpf inválido
   else
     return 1; //Caso do cpf válido
-}
+}//Fim da função verificaCPF(char *n);
 
