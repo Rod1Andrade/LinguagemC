@@ -6,9 +6,6 @@
 #include <stdlib.h>
 #include <string.h>
 
-///PARAMETRIZAÇÃO DAS FUNÇÕES
-int verificaCPF(char *n);
-
 ///IMPLEMENTAÇÂO DA FUNÇÃO VERIFICACPF
 // @author: Rodrigo Andrade
 // @param char * n

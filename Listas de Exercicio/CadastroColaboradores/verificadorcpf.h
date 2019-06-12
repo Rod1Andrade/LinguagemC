@@ -5,8 +5,8 @@
 // Implementação de umas das possíveis na Linguagem C
 ///////////////////////////////////////////////////////////
 
-#ifdef VERIFICADORCPF_H
-#define VERIFICADORCPF_H
+#ifdef VERIFICADORCPF_H_INCLUDED
+#define VERIFICADORCPF_H_INCLUDED
 
 /**
  * Define a função de verificação do CPF
@@ -14,3 +14,4 @@
 int verificaCPF(char *n);
 
 #endif 
+
