@@ -26,7 +26,7 @@ int main(int argv, char *argc[])
   //Tamanho vetor:
   const int tam = 2;
 
-  //Intanciando na memória um vetor de pessoa.
+  //Instanciando na memória um vetor de pessoa.
   pessoa Pessoa[tam];
 
   //Vetor De pessoas velhas:

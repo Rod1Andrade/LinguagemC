@@ -1,23 +1,22 @@
-/*
- * @author: Rodrigo Andrade
- * Validação de datas, anos bissexto e meses com 30 e 31.
- *
- * **/
+/**MY HEADER FILE*/
+#include "data.h"
 
+/**APIS DA LINGUAGEM C*/
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include <ctype.h>
 
-int bissexto(int ano);
-int validaData(char *Data);
+/**VARIÁVEIS GLOBAIS**/
+int vetor[3]; //Armazena as data dia, mes e ano, nas posições 0, 1, 2;
 
 int validaData(char *Data)
 {
-  
-  //Verifica o tamanho da data: 
+
+  //Verifica o tamanho da data:
   if(strlen(Data) != 10)
   {
+    printf("\nMensagem de erro: Formato da data deve ser dd/mm/yyyy.\n");
     return 0;
   }//Fim do if
   for(int i = 0; Data[i] != '\0'; i++)
@@ -29,7 +28,6 @@ int validaData(char *Data)
   }//Fim do for
 
   //Separo os caracteres de / e coloca os numeros em um vetor, convetendo-os para inteiro:
-  int vetor[3];
   char *token;
 
   token = strtok(Data, "/");
@@ -37,7 +35,7 @@ int validaData(char *Data)
 
   for(int i = 1; i < 3; i++)
   {
-    token = strtok('\0', "/"); 
+    token = strtok('\0', "/");
     vetor[i] = atoi(token);
   }
 
@@ -51,9 +49,12 @@ int validaData(char *Data)
 
   //Verifica o padrão de mesês
   if(mes < 1 && mes > 12)
+  {
+    ///Mensagem de erro REGRA DE NEGÓCIO
+    printf("\nMensagem de erro: Mês de nascimento inválido.\n");
     return 0;
-
-  int conjuntoMeses[] = {1, 3, 5, 7, 8, 10, 12}; 
+  }
+  int conjuntoMeses[] = {1, 3, 5, 7, 8, 10, 12};
   int conjuntoMeses2[] = {2, 4, 6, 9, 11};
 
   //Verificação do ano bissexto:
@@ -63,12 +64,18 @@ int validaData(char *Data)
       if(dia > 0 && dia < 30)
         return 1;
       else
+      {
+        printf("\nMensagem de erro: Dia de nascimento inválido\n");///REGRA DE NEGÓCIO
         return 0;
+      }
     else
       if(dia > 0 && dia < 29)
         return 1;
       else
-        return 0; 
+      {
+        printf("\nMensagem de erro: Dia de nascimento inválido\n");///REGRA DE NEGÓCIO
+        return 0;
+      }
   }
 
   //Verificação dos meses que vai até 31:
@@ -76,10 +83,19 @@ int validaData(char *Data)
   {
     if(mes == conjuntoMeses[i])
     {
-      if(dia >= 1 &&  dia <= 31)  
+      if(dia >= 1 && dia <= 31)
+      {
         return 1;
+      }
+      else
+      {
+        printf("\nMensagem de erro: Dia de nascimento inválido\n");
+        return 0;
+      }
       break;
     }
+    ///Mensagem da: REGRA DE NEGÓCIO
+
   }
 
   //Verificação dos meses que vai até 30:
@@ -90,10 +106,17 @@ int validaData(char *Data)
       if(dia >= 1 && dia <= 30)
       {
         return 1;
-        break;
       }
+      ///Mensagem da: REGRA DE NEGÓCIO
+      else
+      {
+        printf("\nMensagem de erro: Dia de nascimento inválido\n");
+        return 0;
+      }
+      break;
     }
   }
+
   return 0;
 }
 
@@ -105,3 +128,21 @@ int bissexto(int ano)
   return 0;
 }
 
+int idadeValida(char *Data)
+{
+  //Depos da separação das variaveis e conversão, aplica-se a lógica de validação
+  int ano = vetor[2];
+
+  /**REGRA DE NEGÓCIO, SE FOR MENOR DE 18 ANOS E MAIOR QUE 80, NÃO PODE ENTRAR NO CADASTRO: */
+  if((2019 - ano) >= 18)
+  {
+    return 1;
+  }
+  else
+  {
+    printf("\nMensagem de erro: Ano de nascimento inválido.\n");
+    setbuf(stdin, NULL);
+    return 0;
+  }
+  /*******************************************************************************/
+}

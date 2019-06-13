@@ -114,7 +114,7 @@ int main(void)
   } 
 
   setbuf(stdin, NULL);
-  printf("Pressione qualquer tecla para ver as jogadas: \n");
+  printf("Pressione enter para ver todas as jogadas possíveis: \n");
   getchar();
 
   for(int n1 = 1; n1 <= 60; n1++)

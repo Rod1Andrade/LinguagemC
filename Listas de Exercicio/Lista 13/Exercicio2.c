@@ -41,10 +41,7 @@ int main(void)
     Usuario.Senha[strlen(Usuario.Senha) - 1] = '\0';
 
     if((strcmp(Usuario.Login, UsuarioPadrao) && strcmp(Usuario.Senha, SenhaPadrao)) == 0)
-    {
-      printf("\nACESSO LIBERADO\n");
       break;
-    }
     else
     {
       printf("\nUsuário ou Senha inválidos!\n");
@@ -52,6 +49,8 @@ int main(void)
     }
 
   }
+  
+  printf("\nACESSO LIBERADO\n");
 
   return 0;
 }
