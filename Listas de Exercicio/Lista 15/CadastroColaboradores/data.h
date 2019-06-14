@@ -1,3 +1,4 @@
+///
 /// @author: Rodrigo Moreira Pires de Andrade
 ///
 /// Validação datas, incluindo anos bissexto e meses com 30 e 31 dias
@@ -21,7 +22,7 @@ bissexto(int ano);
 */
 int validaData(char *Data);
 
-///FUNÇÃO A SER ALTERADA:
+///FUNÇÃO A SER ALTERADA: pertence a regra de negócio
 int idadeValida(char *Data);
 
 

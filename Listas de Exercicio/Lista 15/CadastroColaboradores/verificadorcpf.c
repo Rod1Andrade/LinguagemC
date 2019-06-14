@@ -16,24 +16,33 @@ int verificaCPF(char *n)
   if(strlen(n) < 11)
     return 0; //CPF INVÁLIDO
 
+  ///CASOS IMEDIATAMENTE INVÁLIDOS:
+  if(strcmp(n, "11111111111") == 0)
+      return 0;
+  else if(strcmp(n, "22222222222") == 0)
+        return 0;
+  else if(strcmp(n, "33333333333") == 0)
+    return 0;
+  else if(strcmp(n, "44444444444") == 0)
+    return 0;
+  else if(strcmp(n, "55555555555") == 0)
+    return 0;
+  else if(strcmp(n, "66666666666") == 0)
+    return 0;
+  else if(strcmp(n, "77777777777") == 0)
+    return 0;
+  else if(strcmp(n, "88888888888") == 0)
+    return 0;
+  else if(strcmp(n, "99999999999") == 0)
+    return 0;
+
   int vetor[11];
+
 
   //Váriaveis para verificação do Digito:
   int Digito1 = 0;
   int Digito2 = 0;
   int Count = 10;
-  int conjuntoInvalido[9][11] =
-  {
-    {1,1,1,1,1,1,1,1,1,1,1},
-    {2,2,2,2,2,2,2,2,2,2,2},
-    {3,3,3,3,3,3,3,3,3,3,3},
-    {4,4,4,4,4,4,4,4,4,4,4},
-    {5,5,5,5,5,5,5,5,5,5,5},
-    {6,6,6,6,6,6,6,6,6,6,6},
-    {7,7,7,7,7,7,7,7,7,7,7},
-    {8,8,8,8,8,8,8,8,8,8,8},
-    {9,9,9,9,9,9,9,9,9,9,9}
-  };
 
   ///Converte cada caraceter da tabela ascii para um correspontende inteiro.
   for(int i = 0; i < 11; i++)
@@ -74,23 +83,6 @@ int verificaCPF(char *n)
     }
   }
 
-  //Caso de descarte imediato:
-  int contadorIguais = 0;
-  for(int i = 0; i < 9; i++)
-  {
-    for(int j = 0; j < 11; j++)
-    {
-      if(vetor[j] == conjuntoInvalido[i][j])
-      {
-        contadorIguais++;
-      }//Fim if
-    }//Fim for interno
-  }//Fim for externo
-
-  //Se o contador der 11 digitos iguais, deve retorna 0
-  if(contadorIguais == 11)
-    return 0; //CPF Inválido
-
   //Somatório do Digito1
   for(int i = 0; i < 9; i++)
     Digito1 += (vetor[i] * Count--);
@@ -113,7 +105,6 @@ int verificaCPF(char *n)
   Digito2 = 11 - Digito2;
   if(Digito2 > 9)
     Digito2 = 0;
-
 
   if(Digito1 != vetor[9] && Digito2 != vetor[10])
     return 0; //Caso do cpf inválido

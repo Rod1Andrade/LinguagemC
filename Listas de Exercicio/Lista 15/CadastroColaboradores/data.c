@@ -1,3 +1,8 @@
+/**
+* @author: Rodrigo Andrade
+* 13/jun/2019
+*
+*/
 /**MY HEADER FILE*/
 #include "data.h"
 
@@ -128,13 +133,13 @@ int bissexto(int ano)
   return 0;
 }
 
+/**REGRA DE NEGÓCIO, SE FOR MENOR DE 18 ANOS E MAIOR QUE 80, NÃO PODE ENTRAR NO CADASTRO: */
 int idadeValida(char *Data)
 {
   //Depos da separação das variaveis e conversão, aplica-se a lógica de validação
   int ano = vetor[2];
 
-  /**REGRA DE NEGÓCIO, SE FOR MENOR DE 18 ANOS E MAIOR QUE 80, NÃO PODE ENTRAR NO CADASTRO: */
-  if((2019 - ano) >= 18)
+  if((2019 - ano) >= 18 && (2019 - ano) <= 80)
   {
     return 1;
   }
@@ -144,5 +149,5 @@ int idadeValida(char *Data)
     setbuf(stdin, NULL);
     return 0;
   }
-  /*******************************************************************************/
 }
+ /*******************************************************************************/
