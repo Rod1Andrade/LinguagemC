@@ -1,23 +1,27 @@
 # depslib dependency file v1.0
-1560519750 source:/home/roddev/Git/LinguagemC/Listas de Exercicio/Lista 15/CadastroColaboradores/main.c
+1560710627 source:/home/roddev/Git/LinguagemC/Listas de Exercicio/Lista 15/CadastroColaboradores/main.c
 	"verificadorcpf.h"
 	"data.h"
+	"DefaultAPISystem.h"
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
 	<ctype.h>
+	<locale.h>
 
 1560336231 /home/roddev/Git/LinguagemC/Listas de Exercicio/Lista 15/CadastroColaboradores/verificadorcpf.h
 
-1560517441 source:/home/roddev/Git/LinguagemC/Listas de Exercicio/Lista 15/CadastroColaboradores/verificadorcpf.c
+1560602720 source:/home/roddev/Git/LinguagemC/Listas de Exercicio/Lista 15/CadastroColaboradores/verificadorcpf.c
 	"verificadorcpf.h"
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
 
-1560436230 source:/home/roddev/Git/LinguagemC/Listas de Exercicio/Lista 15/CadastroColaboradores/DefaultAPISystem.c
+1560707729 source:/home/roddev/Git/LinguagemC/Listas de Exercicio/Lista 15/CadastroColaboradores/DefaultAPISystem.c
+	"DefaultAPISystem.h"
+	<stdio.h>
 
-1560436128 source:/home/roddev/Git/LinguagemC/Listas de Exercicio/Lista 15/CadastroColaboradores/data.c
+1560712408 source:/home/roddev/Git/LinguagemC/Listas de Exercicio/Lista 15/CadastroColaboradores/data.c
 	"data.h"
 	<stdio.h>
 	<stdlib.h>
@@ -25,4 +29,6 @@
 	<ctype.h>
 
 1560435943 /home/roddev/Git/LinguagemC/Listas de Exercicio/Lista 15/CadastroColaboradores/data.h
+
+1560707606 /home/roddev/Git/LinguagemC/Listas de Exercicio/Lista 15/CadastroColaboradores/DefaultAPISystem.h
 

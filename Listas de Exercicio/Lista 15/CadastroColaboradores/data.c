@@ -14,6 +14,7 @@
 
 /**VARIÁVEIS GLOBAIS**/
 int vetor[3]; //Armazena as data dia, mes e ano, nas posições 0, 1, 2;
+bissexto(int ano);
 
 int validaData(char *Data)
 {
@@ -49,6 +50,18 @@ int validaData(char *Data)
   dia = vetor[0];
   mes = vetor[1];
   ano = vetor[2];
+
+  ///Voltando integridade da string
+  char mesString[4];
+  char anoString[4];
+
+  sprintf(mesString, "%d", mes);
+  sprintf(anoString, "%d", ano);
+
+  strcat(Data, "/");
+  strcat(Data, mesString);
+  strcat(Data, "/");
+  strcat(Data, anoString);
 
   bissex = bissexto(ano);
 

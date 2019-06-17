@@ -24,4 +24,6 @@ void menuEscolaridade();
 */
 void atribuicaoEscolaridade(char opcao, char *destino);
 
+void menuAplicacao();
+
 #endif // DEFAULTAPISYSTEM_H_INCLUDED

@@ -34,6 +34,7 @@
 		<Unit filename="DefaultAPISystem.c">
 			<Option compilerVar="CC" />
 		</Unit>
+		<Unit filename="DefaultAPISystem.h" />
 		<Unit filename="data.c">
 			<Option compilerVar="CC" />
 		</Unit>

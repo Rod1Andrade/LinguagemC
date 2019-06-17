@@ -13,9 +13,10 @@
 #include <stdlib.h>
 #include <string.h>
 #include <ctype.h>
+#include <locale.h>
 
 //Estrutura Colaborador
-typedef struct
+typedef struct colaborador
 {
   char Nome[41];
   char CPF[13];
@@ -28,15 +29,81 @@ typedef struct
   char Departamento[15];
   char Escolaridade[15];
 
-} colaborador;
+};
 
 /**GLOBAIS**/
 const float SALARIO_MINIMO = 998.0;
+char endereco[] = "Cad_Colabores.txt";
 
-int main(int argc, char **argv)
+
+void adcionarColaborador(char *endereco);
+void visualizarDados(char *endereco);
+
+int main(int argc, char *argv[])
+{
+  setlocale(LC_ALL, "Portuguese");
+  int Opcao;
+
+  do
+  {
+    system("clear");
+    printf("\tLABORATÓRIO FARMACÊUTICO LÓGICA I\n");
+    printf("\tSistema de Recursos Humanos\n\n");
+
+    menuAplicacao();
+
+    printf("\nOpcao: ");
+    scanf("%d", &Opcao);
+    getchar();
+
+    if(Opcao == 0)
+      exit(1); //Finaliza a aplicação
+
+    switch(Opcao)
+    {
+      case 1:
+        system("clear");
+        printf("Entrou 1\n");
+        getchar();
+      break;
+      case 2:
+      break;
+      case 3:
+        system("clear");
+        printf("Adcionar Colaboradores: \n");
+        printf("---------------------------\n");
+        printf("Para finalizar o programa digite fim no nome.");
+        getchar();
+
+        system("clear");
+
+        adcionarColaborador(endereco);
+
+      break;
+      case 4:
+      break;
+      case 5:
+        system("clear");
+        printf("Visualizar Colaboradores: \n");
+        printf("---------------------------\n");
+        visualizarDados(endereco);
+        getchar();
+      break;
+      default:
+        printf("Opção Inválida!\n");
+      break;
+    }
+
+  } while(1);
+  return 0;
+}
+
+
+///Funcionalidades da aplicação:
+void adcionarColaborador(char *endereco)
 {
   //CHAMADA DO ARQUIVO
-  FILE *Arquivo = fopen("Cad_Colabores.txt", "ab");
+  FILE *Arquivo = fopen(endereco, "ab");
 
   //Verificação da abertura do arquivo
   if(Arquivo == NULL)
@@ -48,10 +115,8 @@ int main(int argc, char **argv)
 
   //Variável referente aos departamentos e escolaridade
   char opcao;
-
   //Instância o colaborador na memória
-  colaborador Colaborador;
-  printf("%zu\n", sizeof(colaborador));
+  struct colaborador Colaborador;
 
   while(strcasecmp(Colaborador.Nome, "fim") != 0)
   {
@@ -119,6 +184,7 @@ int main(int argc, char **argv)
         Colaborador.DataNascimento[strcspn(Colaborador.DataNascimento, "\n")] = '\0';
       }//Fim validação datas
 
+      getchar();
       setbuf(stdin, NULL);
 
       printf("Nacionalidade: ");
@@ -168,7 +234,7 @@ int main(int argc, char **argv)
       while(opcao != 'I' && opcao != 'L' && opcao != 'A' && opcao != 'T' && opcao != 'S')
       {
         setbuf(stdin, NULL);
-        printf("\n\Mensagem de erro: Opções válidas para departamento (I L A T S).\n");
+        printf("\nMensagem de erro: Opções válidas para departamento (I L A T S).\n");
         printf("\nDepartamento: ");
         scanf("%c", &opcao);
         getchar();
@@ -198,15 +264,84 @@ int main(int argc, char **argv)
       //Função para atribuir opções a escolaridade
       atribuicaoEscolaridade(opcao, Colaborador.Escolaridade);
       //Fim validação Escolaridade
+      setbuf(stdin, NULL);
+
+      system("clear");
+
+      printf("Deseja armazenar os dados (S/n)? ");
+      scanf("%c", &opcao);
+      getchar();
+      opcao = toupper(opcao);
+
+      while(opcao != 'S' && opcao != 'N')
+      {
+        system("clear");
+        printf("\nMensagem de erro: Apenas S ou N.\n");
+        printf("Deseja armazenar os dados (S/n)? ");
+        scanf("%c", &opcao);
+        getchar();
+        opcao = toupper(opcao);
+      }
+
+    if(opcao == 'S')
+    {
+      int result = fwrite(&Colaborador, sizeof(struct colaborador), 1, Arquivo);
+      if(result == 1)
+      {
+        system("clear");
+        printf("Dados Armazenados com sucesso! Pressione Enter\n");
+        getchar();
+      }
+      else
+      {
+        printf("Ocorreu algum erro! Pressione Enter\n");
+        getchar();
+      }
+    }
+    else
+    {
+      printf("Tem certeza? Os dados digitados serão perdidos. (S/ n) ");
+    }
 
     }//Fim do if
-
-    ///TODO: Armazenar dados em arquivo:
 
   }//Fim do while mais externo
 
   //Fechamento do arquivo
   fclose(Arquivo);
 
-  return 0;
+}
+
+void visualizarDados(char *endereco)
+{
+  int contador = 0;
+  struct colaborador Colaborador;
+  FILE *Arquivo;
+  Arquivo = fopen(endereco, "rb");
+  if(Arquivo == NULL)
+  {
+    printf("Impossível abrir o arquivo para leitura\n");
+    getchar();
+    exit(1);
+  }
+
+  int result = fread(&Colaborador, sizeof(struct colaborador), 1, Arquivo);
+
+  while(!feof(Arquivo))
+  {
+    if(result == 1)
+    {
+      printf("ID: %d\n", ++contador);
+      printf("Nome: %s\n", Colaborador.Nome);
+      printf("CPF: %s\n", Colaborador.CPF);
+      printf("Sexo: %c\n", Colaborador.Sexo);
+      printf("Data Nascimento: %s\n", Colaborador.DataNascimento);
+      printf("Departamento: %s\n", Colaborador.Departamento);
+
+      printf("\n---------------------------\n");
+      result = fread(&Colaborador, sizeof(struct colaborador), 1, Arquivo);
+
+    }
+  }
+  fclose(Arquivo);
 }

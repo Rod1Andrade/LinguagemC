@@ -4,6 +4,18 @@
 /**LIBRARY LANGUAGE C*/
 #include <stdio.h>
 
+void menuAplicacao()
+{
+  printf("\nMENU\n");
+  printf("----------\n");
+
+  printf("1 - Consultar\n");
+  printf("2 - Editar\n");
+  printf("3 - Adcionar Colaborador\n");
+  printf("4 - Remover Colaborador\n");
+  printf("5 - Visualizar Colaboradores\n");
+  printf("0 - Finalizar Sistema\n");
+}
 
 void menuDepartamentos()
 {
